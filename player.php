@@ -6,12 +6,27 @@ class Player
 
     protected $preFlopStrategy;
 
+    protected $rankIdMultiplyer;
+
     public function __construct()
     {
         $this->preFlopStrategy = new PreFlopStrategy();
+        $this->rankIdMultiplyer = new RankIdMultiplyer();
     }
 
     public function betRequest($game_state)
+    {
+
+        if (empty($game_state['community_cards'])){
+            return $this->getBetBeforeFlop($game_state);
+        }else{
+            return $this->getBetAfterFlop($game_state);
+        }
+
+
+    }
+
+    public function getBetBeforeFlop($game_state)
     {
         $player = $game_state['players'][$game_state['in_action']];
 
@@ -35,6 +50,16 @@ class Player
             default:
                 return 0;
         }
+    }
+
+    public function getBetAfterFlop($game_state)
+    {
+        return $this->getBetBeforeFlop($game_state);
+        /*
+        $player = $game_state['players'][$game_state['in_action']];
+
+        return $this->rankIdMultiplyer->getMultiply($rank,$player['stack']);
+        */
     }
 
     public function showdown($game_state)
