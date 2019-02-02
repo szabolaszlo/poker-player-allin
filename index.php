@@ -1,5 +1,11 @@
 <?php
 
+$old_error_handler = set_error_handler("myErrorHandler");
+
+function myErrorHandler($errno, $errstr, $errfile, $errline){
+    echo 0;
+}
+
 require_once('player.php');
 
 $player = new Player();
