@@ -6,7 +6,7 @@ class Player
 
     public function betRequest($game_state)
     {
-        return 10000;
+        return 10;
     }
 
     public function showdown($game_state)
