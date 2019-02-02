@@ -52,7 +52,10 @@ class Player
 
                 if (
                     (int)$game_state['pot'] <= ($game_state['small_blind'] * 4)
-                    || $call <= 20
+                    || (
+                        $call <= ($game_state["small_blind"] * 8)
+                        && $call <= (int)$player["stack"] * 0.2
+                    )
                 ) {
                     return $call;
                 }
