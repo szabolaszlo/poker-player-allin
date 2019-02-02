@@ -29,7 +29,7 @@ class Player
                 return 0;
             //case 'raise':
             case 'limp':
-                return 0;
+                return (int)$player['stack'] * 0.3;
             case 'fold':
                 return 0;
             default:
