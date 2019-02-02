@@ -24,7 +24,7 @@ class Player
                 }
                 return $game_state['pot'];
             case 'allin':
-                return (int)($player['stack'] / 2);
+                return (int)$player['stack'];
             case 'blind':
                 return 0;
             //case 'raise':
