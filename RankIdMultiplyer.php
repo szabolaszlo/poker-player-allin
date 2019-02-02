@@ -16,18 +16,18 @@ class RankIdMultiplyer
             case '1':
             case '2':
                 if ($rank['strength'] >= 1){
-                    return (int)$stack * 0.2;
+                    return (int)$stack * 0.4;
                 }
                 return 0;
             case '3':
             case '4':
             case '5':
-                return (int)$stack * 0.5;
+                return (int)$stack;
             //case 'raise':
             case '6':
             case '7':
             case '8':
-                return (int)$stack * 0.9;
+                return (int)$stack;
             default:
                 return 0;
         }
