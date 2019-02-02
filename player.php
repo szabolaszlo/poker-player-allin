@@ -51,6 +51,12 @@ class Player
                     return (int) $game_state['current_buy_in'] - $player['bet'];
                 }
 
+                $add = (int) $game_state['current_buy_in'] - $player['bet'];
+
+                if ($add <= 20){
+                    return (int) $game_state['current_buy_in'] - $player['bet'];
+                }
+
                 return 0;
             case 'fold':
                 return 0;
