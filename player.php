@@ -6,6 +6,7 @@ class Player
 
     public function betRequest($game_state)
     {
+        sleep(20);
         return 10;
     }
 
