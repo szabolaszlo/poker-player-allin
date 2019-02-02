@@ -12,10 +12,13 @@ class RankIdMultiplyer
     {
         $rank = (int)$rank['rank'];
 
-        switch ($rank) {
+        switch ($rank['rank']) {
             case '1':
             case '2':
-                return (int)$stack * 0.2;
+                if ($rank['strength'] >= 1){
+                    return (int)$stack * 0.2;
+                }
+                return 0;
             case '3':
             case '4':
             case '5':
