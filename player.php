@@ -35,8 +35,6 @@ class Player
 
         $decision = $this->preFlopStrategy->getAction($player['hole_cards']);
 
-//        $ranking = $this->ranking->rankCards((array)$player['hole_cards'], (array)$game_state['community_cards']);
-
         switch ($decision) {
             case 'raise':
                 if ($game_state['pot'] > $player['stack'] * 0.7) {
@@ -59,11 +57,15 @@ class Player
 
     public function getBetAfterFlop($game_state)
     {
+
         return $this->getBetBeforeFlop($game_state);
+
         /*
         $player = $game_state['players'][$game_state['in_action']];
 
-        return $this->rankIdMultiplyer->getMultiply($rank,$player['stack']);
+        $ranking = $this->ranking->rankCards((array)$player['hole_cards'], (array)$game_state['community_cards']);
+
+        return $this->rankIdMultiplyer->getMultiply($ranking,$player['stack']);
         */
     }
 
