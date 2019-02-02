@@ -26,7 +26,6 @@ class Player
             return $this->getBetAfterFlop($game_state);
         }
 
-
     }
 
     public function getBetBeforeFlop($game_state)
@@ -58,15 +57,12 @@ class Player
     public function getBetAfterFlop($game_state)
     {
 
-        return $this->getBetBeforeFlop($game_state);
-
-        /*
         $player = $game_state['players'][$game_state['in_action']];
 
         $ranking = $this->ranking->rankCards((array)$player['hole_cards'], (array)$game_state['community_cards']);
 
         return $this->rankIdMultiplyer->getMultiply($ranking,$player['stack']);
-        */
+
     }
 
     public function showdown($game_state)
