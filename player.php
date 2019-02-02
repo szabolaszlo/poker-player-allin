@@ -20,9 +20,9 @@ class Player
     public function betRequest($game_state)
     {
 
-        if (empty($game_state['community_cards'])){
+        if (empty($game_state['community_cards'])) {
             return $this->getBetBeforeFlop($game_state);
-        }else{
+        } else {
             return $this->getBetAfterFlop($game_state);
         }
 
@@ -33,6 +33,7 @@ class Player
         $player = $game_state['players'][$game_state['in_action']];
 
         $decision = $this->preFlopStrategy->getAction($player['hole_cards']);
+
 
         switch ($decision) {
             case 'raise':
@@ -46,6 +47,9 @@ class Player
                 return 0;
             //case 'raise':
             case 'limp':
+                if ((int)$game_state['pot'] <= 10) {
+                    return $game_state['current_buy_in'];
+                }
                 return 0;
             case 'fold':
                 return 0;
@@ -61,7 +65,7 @@ class Player
 
         $ranking = $this->ranking->rankCards((array)$player['hole_cards'], (array)$game_state['community_cards']);
 
-        return $this->rankIdMultiplyer->getMultiply($ranking,$player['stack']);
+        return $this->rankIdMultiplyer->getMultiply($ranking, $player['stack']);
 
     }
 
