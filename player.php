@@ -21,7 +21,7 @@ class Player
     {
 
         if (empty($game_state['community_cards'])) {
-            return $this->getBetBeforeFlop($game_state);
+            return (int) $this->getBetBeforeFlop($game_state);
         } else {
             return $this->getBetAfterFlop($game_state);
         }
@@ -48,8 +48,9 @@ class Player
             //case 'raise':
             case 'limp':
                 if ((int)$game_state['pot'] <= 10) {
-                    return $game_state['current_buy_in'];
+                    return (int) $game_state['current_buy_in'] - $player['bet'];
                 }
+
                 return 0;
             case 'fold':
                 return 0;
