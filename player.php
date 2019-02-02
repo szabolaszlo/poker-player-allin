@@ -48,16 +48,13 @@ class Player
             //case 'raise':
             case 'limp':
 
+                $call = (int)$game_state['current_buy_in'] - $player['bet'];
 
-
-                if ((int)$game_state['pot'] <= ($game_state['small_blind'] * 4)) {
-                    return (int) $game_state['current_buy_in'] - $player['bet'];
-                }
-
-                $add = (int) $game_state['current_buy_in'] - $player['bet'];
-
-                if ($add <= 20){
-                    return (int) $game_state['current_buy_in'] - $player['bet'];
+                if (
+                    (int)$game_state['pot'] <= ($game_state['small_blind'] * 4)
+                    || $call <= 20
+                ) {
+                    return $call;
                 }
 
                 return 0;
