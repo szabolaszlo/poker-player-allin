@@ -83,7 +83,10 @@ class Player
             return max($bet, $minimumBet);
         }
 
-        if ($game_state['dealer'] == $game_state['in_action']) {
+        if (
+            $game_state['dealer'] == $game_state['in_action']
+            && ($game_state["current_buy_in"] - $player["bet"] == 0)
+        ) {
             return $minimumBet;
         }
 
