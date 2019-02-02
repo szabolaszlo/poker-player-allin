@@ -72,7 +72,15 @@ class Player
 
         $ranking = $this->ranking->rankCards((array)$player['hole_cards'], (array)$game_state['community_cards']);
 
-        return $this->rankIdMultiplyer->getMultiply($ranking, $player['stack']);
+        $minimumBet = $game_state['current_buy_in'] - $player['bet'] + $game_state['minimum_raise'];
+
+        $bet = $this->rankIdMultiplyer->getMultiply($ranking, $player['stack']);
+
+        if($bet){
+            return max($bet, $minimumBet);
+        }
+
+        return 0;
 
     }
 
