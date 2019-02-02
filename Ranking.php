@@ -48,6 +48,9 @@ class Ranking
             }
         }
         $ranking['strength'] = $i;
+        if ($playerCards[0]["rank"] == $playerCards[1]["rank"]) {
+            $ranking["strength"] = 2;
+        }
         return $ranking;
     }
 }
