@@ -2,7 +2,7 @@
 
 class Player
 {
-    const VERSION = "Default PHP folding player";
+    const VERSION = "TEAM ALL IN";
 
     public function betRequest($game_state)
     {
@@ -11,5 +11,14 @@ class Player
 
     public function showdown($game_state)
     {
+    }
+
+    public function getMe($game_state)
+    {
+        foreach ($game_state["players"] as $player) {
+            if ($player["version"] === self::VERSION) {
+                return $player;
+            }
+        }
     }
 }
