@@ -7,6 +7,7 @@ function myErrorHandler($errno, $errstr, $errfile, $errline){
 }
 
 require_once('player.php');
+require_once ('PreFlopStrategy.php');
 
 $player = new Player();
 
