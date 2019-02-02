@@ -1,5 +1,7 @@
 <?php
 
+require_once __DIR__.'/vendor/autoload.php';
+
 $old_error_handler = set_error_handler("myErrorHandler");
 
 function myErrorHandler($errno, $errstr, $errfile, $errline){
@@ -8,6 +10,7 @@ function myErrorHandler($errno, $errstr, $errfile, $errline){
 
 require_once('player.php');
 require_once ('PreFlopStrategy.php');
+require_once ('Ranking.php');
 require_once ('RankIdMultiplyer.php');
 
 $player = new Player();

@@ -6,11 +6,14 @@ class Player
 
     protected $preFlopStrategy;
 
+    protected $ranking;
+
     protected $rankIdMultiplyer;
 
     public function __construct()
     {
         $this->preFlopStrategy = new PreFlopStrategy();
+        $this->ranking = new Ranking();
         $this->rankIdMultiplyer = new RankIdMultiplyer();
     }
 
@@ -31,6 +34,8 @@ class Player
         $player = $game_state['players'][$game_state['in_action']];
 
         $decision = $this->preFlopStrategy->getAction($player['hole_cards']);
+
+//        $ranking = $this->ranking->rankCards((array)$player['hole_cards'], (array)$game_state['community_cards']);
 
         switch ($decision) {
             case 'raise':
