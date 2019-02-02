@@ -10,7 +10,7 @@ class RankIdMultiplyer
 {
     public function getMultiply($rank,$stack)
     {
-        $rank = (int)$rank['rank'];
+
 
         switch ($rank['rank']) {
             case '1':
